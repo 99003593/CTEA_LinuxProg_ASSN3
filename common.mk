@@ -19,10 +19,13 @@ endif
 
 # Protect against removing working directory
 ifeq ($(abspath $(OBJ_DIR)),$(abspath .))
-	RM_OBJS := $(OBJS) $(OBJ)
+	RM_OBJS += $(OBJS) $(OBJ)
 else
-	RM_OBJS := $(OBJ_DIR)
+	RM_OBJS += $(OBJ_DIR)
 endif
+
+# To run if any on the makefiles change
+DEP_ON_MAKEFILES := $(realpath $(MAKEFILE_LIST))
 
 # Make these targets always
 .PHONY: all run clean
@@ -33,7 +36,7 @@ run: $(OBJ)
 	$(Q)$(OBJ)
 
 # Cleanup by removing object dir
-clean:
+clean: $(DEP_ON_MAKEFILES)
 	$(Q)rm -rf $(RM_OBJS)
 
 # Default rule for linking output
@@ -45,7 +48,7 @@ endif
 	$(Q)$(CC) $^ $(LDFLAGS) -o $@
 
 # Default rule for compiles object files
-$(OBJ_DIR)/%.o: %.c
+$(OBJ_DIR)/%.o: %.c $(DEP_ON_MAKEFILES)
 	@mkdir -p $(dir $@)
 # Only print pretty if not vebose
 ifneq ($(V),1)
