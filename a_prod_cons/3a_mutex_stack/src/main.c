@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include "stack.h"
 
-#define NUM_TRIES (10)
+#define NUM_TRIES   (10)
 
 // Thread safe stack using mutexes where appropriate
 stack_t *p_stk;
@@ -14,12 +14,12 @@ pthread_mutex_t mx_stack;
 
 void print_stack(const char *tag, stack_t *p_stk)
 {
-    int* p_i;
+    int *p_i;
 
     printf("%s", tag);
     for (int i = 0; i < stack_size(p_stk); i++)
     {
-        p_i = (int*)stack_peek(p_stk, i);
+        p_i = (int *)stack_peek(p_stk, i);
         if (p_i != NULL)
             printf(" %d", *(p_i));
         else

@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include "cirque.h"
 
-#define NUM_TRIES (10)
+#define NUM_TRIES   (10)
 
 cirque_t *p_crq;
 sem_t sync_prodcons;
@@ -13,12 +13,12 @@ sem_t sync_resource;
 
 void print_cirque(const char *tag, cirque_t *p_crq)
 {
-    int* p_i;
+    int *p_i;
 
     printf("%s", tag);
     for (int i = 0; i < cirque_size(p_crq); i++)
     {
-        p_i = (int*)cirque_peek(p_crq, i);
+        p_i = (int *)cirque_peek(p_crq, i);
         if (p_i != NULL)
             printf(" %d", *(p_i));
         else

@@ -4,22 +4,22 @@
 
 struct stack_s
 {
-    void** buff;
+    void **buff;
     int top;
     int capacity;
 };
 
-stack_t* stack_create(int capacity)
+stack_t *stack_create(int capacity)
 {
-    stack_t *p_stk = (stack_t*)malloc(sizeof(stack_t));
+    stack_t *p_stk = (stack_t *)malloc(sizeof(stack_t));
     p_stk->top = -1;
     p_stk->capacity = capacity;
-    p_stk->buff = (void**)malloc(sizeof(void*)*capacity);
+    p_stk->buff = (void **)malloc(sizeof(void *) * capacity);
 
     return p_stk;
 }
 
-bool stack_isfull(stack_t* p_stk)
+bool stack_isfull(stack_t *p_stk)
 {
     bool ret = true;
     if (p_stk != NULL)
@@ -27,7 +27,7 @@ bool stack_isfull(stack_t* p_stk)
     return ret;
 }
 
-bool stack_isempty(stack_t* p_stk)
+bool stack_isempty(stack_t *p_stk)
 {
     bool ret = true;
     if (p_stk != NULL)
@@ -35,23 +35,23 @@ bool stack_isempty(stack_t* p_stk)
     return ret;
 }
 
-void stack_push(stack_t* p_stk, void* p_item)
+void stack_push(stack_t *p_stk, void *p_item)
 {
-    if(!stack_isfull(p_stk))
+    if (!stack_isfull(p_stk))
     {
         p_stk->top++;
         p_stk->buff[p_stk->top] = p_item;
     }
 }
 
-int stack_size(stack_t* p_stk)
+int stack_size(stack_t *p_stk)
 {
     return p_stk->capacity;
 }
 
-void* stack_peek(stack_t* p_stk, int pos)
+void *stack_peek(stack_t *p_stk, int pos)
 {
-    void* p_item = NULL;
+    void *p_item = NULL;
     if (!stack_isempty(p_stk) && pos <= p_stk->top)
     {
         p_item = p_stk->buff[pos];
@@ -59,9 +59,9 @@ void* stack_peek(stack_t* p_stk, int pos)
     return p_item;
 }
 
-void* stack_pop(stack_t* p_stk)
+void *stack_pop(stack_t *p_stk)
 {
-    void* p_item = NULL;
+    void *p_item = NULL;
     if (!stack_isempty(p_stk))
     {
         p_item = p_stk->buff[p_stk->top];
@@ -73,8 +73,8 @@ void* stack_pop(stack_t* p_stk)
 
 void stack_destroy(stack_t *p_stk)
 {
-    void* p_item;
-    while((p_item = stack_pop(p_stk)) != NULL)
+    void *p_item;
+    while ((p_item = stack_pop(p_stk)) != NULL)
     {
         free(p_item);
     }

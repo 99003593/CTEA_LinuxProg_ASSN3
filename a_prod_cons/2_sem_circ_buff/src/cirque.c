@@ -46,7 +46,7 @@ void cirque_enqueue(cirque_t *p_crq, void *p_item)
     }
 }
 
-int cirque_size(cirque_t* p_crq)
+int cirque_size(cirque_t *p_crq)
 {
     return p_crq->capacity + 1;
 }

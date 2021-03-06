@@ -12,13 +12,13 @@ typedef struct stack_s stack_t;
  *      Pass heap memory pointers as elements of stack.
  */
 
-stack_t* stack_create(int capacity);
-bool stack_isfull(stack_t* p_stk);
-bool stack_isempty(stack_t* p_stk);
-void stack_push(stack_t* p_stk, void* p_item);
-int stack_size(stack_t* p_stk);
-void* stack_peek(stack_t* p_stk, int pos);
-void* stack_pop(stack_t* p_stk);
+stack_t *stack_create(int capacity);
+bool stack_isfull(stack_t *p_stk);
+bool stack_isempty(stack_t *p_stk);
+void stack_push(stack_t *p_stk, void *p_item);
+int stack_size(stack_t *p_stk);
+void *stack_peek(stack_t *p_stk, int pos);
+void *stack_pop(stack_t *p_stk);
 void stack_destroy(stack_t *p_stk);
 
 #endif // __STACK_H_
