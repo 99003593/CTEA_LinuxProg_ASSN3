@@ -25,6 +25,7 @@ else
 endif
 
 # To run if any on the makefiles change
+# https://stackoverflow.com/questions/3871444/making-all-rules-depend-on-the-makefile-itself
 DEP_ON_MAKEFILES := $(realpath $(MAKEFILE_LIST))
 
 # Make these targets always
