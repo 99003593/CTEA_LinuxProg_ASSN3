@@ -46,7 +46,7 @@ void stack_push(stack_t* p_stk, void* p_item)
 
 int stack_size(stack_t* p_stk)
 {
-    return p_stk->top + 1;
+    return p_stk->capacity;
 }
 
 void* stack_peek(stack_t* p_stk, int pos)
