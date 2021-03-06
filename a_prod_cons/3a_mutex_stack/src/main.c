@@ -14,10 +14,16 @@ pthread_mutex_t mx_stack;
 
 void print_stack(const char *tag, stack_t *p_stk)
 {
+    int* p_i;
+
     printf("%s", tag);
     for (int i = 0; i < stack_size(p_stk); i++)
     {
-        printf(" %d", *((int*)stack_peek(p_stk, i)));
+        p_i = (int*)stack_peek(p_stk, i);
+        if (p_i != NULL)
+            printf(" %d", *(p_i));
+        else
+            printf(" %c", '-');
     }
     printf("\n");
 }
