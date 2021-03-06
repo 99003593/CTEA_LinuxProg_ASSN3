@@ -143,7 +143,7 @@ int main()
     }
 main_err_mmap:
     // producer removes shm
-    shm_unlink(shm_path)
+    shm_unlink(shm_path);
 main_err_shm:
     // Close resource semaphore
     sem_close(cs.sync_rsrc);
